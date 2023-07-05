@@ -31,10 +31,6 @@ const Reserva = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    habitacion: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-    },
     cantidad_personas: {
       type: DataTypes.INTEGER,
       allowNull: false,

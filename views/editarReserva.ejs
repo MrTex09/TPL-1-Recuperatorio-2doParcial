@@ -17,7 +17,7 @@
         data-id="<%= id %>"
       >
         <h3 class="mb-3 text-center bg-primary text-light rounded p-2">
-          editar Reserva
+          actualizar la Reserva del viaje
         </h3>
         <div class="row">
           <div class="col col-md-6 col-sm-12 mb-3">
@@ -42,9 +42,11 @@
           </div>
         </div>
         <div class="row">
-          <!-- Fecha Ingreso -->
+          <!-- fecha de la reserva -->
           <div class="col col-md-6 col-sm-12 mb-3">
-            <label for="fecha_ingreso" class="form-label">Fecha Ingreso</label>
+            <label for="fecha_ingreso" class="form-label"
+              >fecha de la reserva</label
+            >
             <input
               type="datetime-local"
               required="true"
@@ -54,9 +56,11 @@
             />
           </div>
 
-          <!-- Fecha Salida -->
+          <!-- fecha de regreso -->
           <div class="col col-md-6 col-sm-12 mb-3">
-            <label for="fecha_salida" class="form-label">Fecha Salida</label>
+            <label for="fecha_salida" class="form-label"
+              >fecha de regreso</label
+            >
             <input
               type="datetime-local"
               required="true"
@@ -68,22 +72,10 @@
         </div>
 
         <div class="row">
-          <!-- Nro Habitación -->
-          <div class="col col-sm-12 col-md-6 mb-3">
-            <label for="habitacion" class="form-label">Habitación</label>
-            <input
-              type="text"
-              required="true"
-              class="form-control"
-              id="habitacion"
-              name="habitacion"
-            />
-          </div>
-
-          <!-- Cantidad de húespedes -->
+          <!-- Cantidad -->
           <div class="col col-sm-12 col-md-6 mb-3">
             <label for="cantidad_personas" class="form-label"
-              >Cant. Personas</label
+              >Cantidad Pasajeros</label
             >
             <input
               type="number"

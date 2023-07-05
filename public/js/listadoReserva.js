@@ -1,16 +1,15 @@
 const obtenerDatos = async () => {
-    // Pedir las reservas al servidor
-    const data = await fetch('http://localhost:4002/api', {
-        method: 'GET'
-    });
-    const reservas = await data.json();
-    return reservas;
-}
-
+  // Pedir las reservas al servidor
+  const data = await fetch("http://localhost:4002/api", {
+    method: "GET",
+  });
+  const reservas = await data.json();
+  return reservas;
+};
 
 const mostrarReservas = (reservas, tablaElement) => {
-let registros = '';
-reservas.forEach(reserva => {
+  let registros = "";
+  reservas.forEach((reserva) => {
     registros += `
         <tr>
             <td>${reserva.codigo}</td>
@@ -18,7 +17,6 @@ reservas.forEach(reserva => {
             <td>${reserva.apellido}</td>
             <td>${reserva.fecha_ingreso}</td>
             <td>${reserva.fecha_salida}</td>
-            <td>${reserva.habitacion}</td>
             <td>${reserva.cantidad_personas}</td>
             <td>${reserva.telefono}</td>
             <td>${reserva.email}</td>
@@ -29,37 +27,30 @@ reservas.forEach(reserva => {
            </div>
             </td>
         </tr>
-    `
-})
+    `;
+  });
 
-tablaElement.innerHTML = registros;
-
-}
-
+  tablaElement.innerHTML = registros;
+};
 
 const eliminarReserva = async (e) => {
+  console.log(e);
+  const id = e.target.dataset.id;
 
-console.log(e)
-const id = e.target.dataset.id;
+  const response = await fetch(`/api/${id}`, {
+    method: "DELETE",
+  });
 
+  const data = await response.json();
 
-const response = await fetch(`/api/${id}`,{
-    method: 'DELETE',
-})
+  alert(data.message);
 
-const data = await response.json();
+  window.location.href = "/";
+};
 
-alert(data.message);
-
-window.location.href = "/"
-
-}
-
-
-document.addEventListener('DOMContentLoaded', async () => {
-// Mostrar las reservas en la tabla
-const tbody = document.querySelector('#listadoReservas');
-const reservas = await obtenerDatos() // undefined si no obtenerDatos no retorna nada
-mostrarReservas(reservas, tbody)
-
+document.addEventListener("DOMContentLoaded", async () => {
+  // Mostrar las reservas en la tabla
+  const tbody = document.querySelector("#listadoReservas");
+  const reservas = await obtenerDatos(); // undefined si no obtenerDatos no retorna nada
+  mostrarReservas(reservas, tbody);
 });
